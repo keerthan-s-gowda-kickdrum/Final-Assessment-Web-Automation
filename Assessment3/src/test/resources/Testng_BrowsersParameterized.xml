@@ -1,0 +1,10 @@
+<suite name="FinalAssessment">
+    <test name="Assessment3" preserve-order="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="testClasses.LoginTest"/>
+            <class name="testClasses.AdminTest"/>
+            <class name="testClasses.DeleteTest"/>
+        </classes>
+    </test>
+</suite>

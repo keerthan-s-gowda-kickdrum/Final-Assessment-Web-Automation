@@ -1,0 +1,26 @@
+<suite name="FinalAssessment" parallel="tests">
+    <test name="Assessment3" preserve-order="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="testClasses.LoginTest"/>
+            <class name="testClasses.AdminTest"/>
+            <class name="testClasses.DeleteTest"/>
+        </classes>
+    </test>
+    <test name="Exercise2FirefoxTest" preserve-order="true">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="testClasses.LoginTest"/>
+            <class name="testClasses.AdminTest"/>
+            <class name="testClasses.DeleteTest"/>
+        </classes>
+    </test>
+    <test name="Exercise1EdgeTest" preserve-order="true">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="testClasses.LoginTest"/>
+            <class name="testClasses.AdminTest"/>
+            <class name="testClasses.DeleteTest"/>
+        </classes>
+    </test>
+</suite>
