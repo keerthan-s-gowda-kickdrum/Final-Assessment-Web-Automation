@@ -29,7 +29,6 @@ public class LoginTest extends BaseTest {
     @BeforeClass
     @Parameters("browser")
     public void setUp(String browser) {
-        super.initExtentReports("LoginPageExtentReport"); // Initialize Extent Reports
         driver = launch_browser(browser);
         driver.manage().window().maximize();
         driver.get(baseUrl);
@@ -140,7 +139,6 @@ public class LoginTest extends BaseTest {
         driver.quit();
         test.log(Status.INFO, "Closed the browser.");
         logger.info("Browser closed.");
-        super.flushExtentReports();
     }
 
 }

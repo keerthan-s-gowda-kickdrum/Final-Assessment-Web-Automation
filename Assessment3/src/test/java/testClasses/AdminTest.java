@@ -34,7 +34,6 @@ public class AdminTest extends BaseTest {
     @BeforeClass
     @Parameters("browser")
     public void setUp(String browser) {
-        super.initExtentReports("AdminTestExtentReport");
         driver = launch_browser(browser);
         driver.manage().window().maximize();
         driver.get(baseUrl);
@@ -123,6 +122,5 @@ public class AdminTest extends BaseTest {
        driver.quit();
        test.log(Status.INFO, "Closed the browser.");
        logger.info("Browser closed.");
-       super.flushExtentReports();
    }
 }

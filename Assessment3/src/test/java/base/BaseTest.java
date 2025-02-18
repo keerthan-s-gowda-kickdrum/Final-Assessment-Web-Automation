@@ -7,13 +7,25 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 
 import java.time.Duration;
 
 public class BaseTest {
-    protected WebDriver driver; // Changed to protected
-    protected ExtentReports extent; // Changed to protected
-    protected ExtentTest test; // Changed to protected
+    protected WebDriver driver;
+    protected static ExtentReports extent;
+    protected ExtentTest test;
+
+    @BeforeSuite
+    public void setUpExtentReports() {
+        extent = new ExtentReports();
+        ExtentSparkReporter sparkReporter = new ExtentSparkReporter("ExtentReports/FinalTestReport.html");
+        extent.attachReporter(sparkReporter);
+        extent.setSystemInfo("Project Name", "Assessment");
+        extent.setSystemInfo("Organisation", "KickdrumTech");
+        System.out.println("Extent Reports initialized...");
+    }
 
     public WebDriver launch_browser(String browser_type) {
         switch (browser_type.toLowerCase()) {
@@ -37,18 +49,11 @@ public class BaseTest {
         return driver;
     }
 
-    public void initExtentReports(String reportName) {
-        extent = new ExtentReports();
-        ExtentSparkReporter sparkReporter = new ExtentSparkReporter("ExtentReports/" + reportName + ".html");
-        extent.attachReporter(sparkReporter);
-        extent.setSystemInfo("Project Name", "Assessment");
-        extent.setSystemInfo("Organisation", "KickdrumTech");
-    }
-
-    // Close ExtentReports
-    public void flushExtentReports() {
+    @AfterSuite
+    public void tearDownExtentReports() {
         if (extent != null) {
-            extent.flush();
+            extent.flush(); // Flush only once after all tests
+            System.out.println("Extent Reports flushed...");
         }
     }
 }
